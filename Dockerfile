@@ -1,6 +1,6 @@
 FROM debian
 
-LABEL maintainer "Viktor Adam <rycus86@gmail.com>"
+LABEL maintainer "Jesse Brennan <brennan@ucsc.edu>"
 
 ARG PYCHARM_VERSION=2019.3
 ARG PYCHARM_BUILD=2019.3.2
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   libxtst-dev libxext-dev libxrender-dev libfreetype6-dev \
   libfontconfig1 libgtk2.0-0 libxslt1.1 libxxf86vm1 \
   && rm -rf /var/lib/apt/lists/* \
-  && useradd -ms /bin/bash developer
+  && useradd -ms /bin/bash --uid 1001 developer
 
 ARG pycharm_source=https://download.jetbrains.com/python/pycharm-community-${PYCHARM_BUILD}.tar.gz
 ARG pycharm_local_dir=.PyCharmCE${PYCHARM_VERSION}
